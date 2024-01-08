@@ -1,0 +1,50 @@
+/*checkpoint 2*/
+    /*TASK n:1*/
+
+FUNCTION dot_product(v1,v2 : INTEGER) : INTEGER
+VAR 
+    ps : INTEGER := 0 
+BEGIN
+    ps = ps + (v1 * v2);
+    RETURN ps;
+END
+
+ALGORITHM orthogonal_vectors(vector)    
+
+VAR
+    n : INTEGER : length(vector);
+    i : INTEGER : 0;
+    first_vector: ARRAY_OF INTEGER[i][0];
+    second_vector: ARRAY_OF INTEGER[i][1];
+
+BEGIN
+    FOR i FROM 0  TO n-1 STEP 1 DO
+        first_vector = vector [i][0];
+        second_vector = vector [i][1];
+        IF( dot_product(first_vector, second_vector) == 0) THEN
+            Write("The vector :",first_vector," and the vector : ",second_vector," are orthogonal")
+        END_IF
+    END_FOR
+
+END
+
+    /*Task n:2*/
+
+FUNCTION sort_insertion( arr : ARRAY_OF INTEGER ) : ARRAY_OF INTEGER
+VAR
+    i, j, key, n : INTEGER;
+
+BEGIN
+    n = length(arr);
+    FOR i FROM 1 TO n-1 STEP i DO
+        key =  arr[i];
+        j = i-1;
+        WHILE ( j >= 0 AND arr[j] > key ) DO
+            arr[j+1] = arr[j]
+            j= j-1;
+        END_WHILE
+        arr[j+1] = key;
+
+    END_FOR
+    RETURN arr;
+END
